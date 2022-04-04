@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const Choice = require('inquirer/lib/objects/choice');
+
 const { type } = require('os');
 
 
@@ -33,14 +33,13 @@ const promptUser = () =>{
             }
         },
         {
-            type: 'input',
+            type: 'confirm',
             name: 'table of contents',
-            message: 'Please enter a Table of Contents for your project',
+            message: 'Would you like to include a Table of Contents?',
             validate: contentsInput =>{
                 if(contentsInput){
                     return true;
                 }else{
-                    console.log('Please enter a Table of Contents for your project!');
                     return false;
                 }
             }
@@ -129,8 +128,10 @@ const promptUser = () =>{
                 }
             }
         }
-
-
-    ]);
+        //Console Logs Users Input
+    ]).then((answer) =>{
+        console.log(answer);
+    })
 };
+
 promptUser();
