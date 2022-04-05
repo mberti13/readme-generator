@@ -1,6 +1,10 @@
 const inquirer = require('inquirer');
 
-const { type } = require('os');
+const fs = require('fs');
+
+
+//Import page-template.js into index.js(generateReadMe function)
+const markdownTemplate = require('./src/page-template.js');
 
 
 //creates function to prompt user in CL
@@ -34,7 +38,7 @@ const promptUser = () =>{
         },
         {
             type: 'confirm',
-            name: 'table of contents',
+            name: 'table',
             message: 'Would you like to include a Table of Contents?',
             validate: contentsInput =>{
                 if(contentsInput){
@@ -129,9 +133,16 @@ const promptUser = () =>{
             }
         }
         //Console Logs Users Input
-    ]).then((answer) =>{
-        console.log(answer);
+    ]).then((data) =>{
+        console.log(data);
     })
 };
 
+// const pageMd = markdownTemplate();
+
+//Prompt User
+//Take info from input and add it to .md through generateReadMe in page-template
+//send completed template to generateMarkdown in utils folder
+
 promptUser();
+    // .then(page)
