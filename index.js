@@ -2,13 +2,19 @@ const inquirer = require('inquirer');
 
 const fs = require('fs');
 
+const writeFile = require('./utils/generateMarkdown');
+
 
 //Import page-template.js into index.js(generateReadMe function)
-const markdownTemplate = require('./src/page-template.js');
+const readMeTemplate = require('./src/page-template.js');
 
+//generates page output from template function
+// const pageMd = readMeTemplate(data);
+
+//Mock Data
 
 //creates function to prompt user in CL
-const promptUser = () =>{
+const promptUser = readMeData =>{
     return inquirer.prompt([
         {
             type: 'input',
@@ -135,7 +141,10 @@ const promptUser = () =>{
         //Console Logs Users Input
     ]).then((data) =>{
         console.log(data);
-    })
+        readMeTemplate(data);
+     })//.then((pageMd) =>{
+        // writeFile(pageMd);
+     //});
 };
 
 // const pageMd = markdownTemplate();
