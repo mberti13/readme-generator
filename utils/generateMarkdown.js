@@ -3,7 +3,7 @@ const fs = require('fs');
 //create const to write file in index.js
 const writeFile = fileContent =>{
     return new Promise((resolve, reject)=>{
-        fs.writeFile('./README.md', fileContent, err =>{
+        fs.writeFile('./dist/README.md', fileContent, err =>{
             //if there's an error, reject Promise and send error to the Promise's `.catch()` method
             if(err){
                 reject (err);

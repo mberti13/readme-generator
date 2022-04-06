@@ -14,7 +14,7 @@ const readMeTemplate = require('./src/page-template.js');
 //Mock Data
 
 //creates function to prompt user in CL
-const promptUser = readMeData =>{
+const promptUser = () =>{
     return inquirer.prompt([
         {
             type: 'input',
@@ -81,7 +81,7 @@ const promptUser = readMeData =>{
             }
         },
         {
-            type: 'checkbox',
+            type: 'list',
             name: 'License',
             message: 'What Licenses were used in this project?',
             choices: ['MIT','GNU GPL 2.0', 'Apache License 2.0','GNU GPL 3.0','BSD License','ISC License']
@@ -141,10 +141,8 @@ const promptUser = readMeData =>{
         //Console Logs Users Input
     ]).then((data) =>{
         console.log(data);
-        readMeTemplate(data);
-     })//.then((pageMd) =>{
-        // writeFile(pageMd);
-     //});
+        return data;
+    });
 };
 
 // const pageMd = markdownTemplate();
@@ -153,5 +151,10 @@ const promptUser = readMeData =>{
 //Take info from input and add it to .md through generateReadMe in page-template
 //send completed template to generateMarkdown in utils folder
 
-promptUser();
-    // .then(page)
+promptUser()
+    .then(readMeData =>{
+        return readMeTemplate(readMeData);
+    })
+    .then(markdownContent =>{
+        writeFile(markdownContent);
+    })
