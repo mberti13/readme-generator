@@ -6,12 +6,12 @@ const generateTable = tableText =>{
 
     return `
 ## Table of Contents
-1. Installation
-2. Usage
-3. Licensing
-4. Contributions
-5. Tests
-6. Questions?
+1. [Installation](#Installation)
+2. [Usage](#Usage)
+3. [Licensing](#Licensing)
+4. [Contributions](#Contributions)
+5. [Tests](#Tests)
+6. [Questions?](#Questions)
     `
 };
 
